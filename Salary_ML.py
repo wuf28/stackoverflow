@@ -64,7 +64,8 @@ def find_optimal_lm_mod(X, y, cutoffs, test_size = .30, random_state=42, plot=Tr
     for cutoff in cutoffs:
 
         #reduce X matrix
-        reduce_X = X.iloc[:, np.where((X.sum() > cutoff) == True)[0]]
+        # reduce_X = X.iloc[:, np.where((X.sum() > cutoff) == True)[0]]
+        reduce_X = X[X.columns[X.sum() > cutoff]]
         num_feats.append(reduce_X.shape[1])
 
         #split the data into train and test
